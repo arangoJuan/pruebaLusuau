@@ -23,19 +23,13 @@ class productoController extends Controller
      */
     public function create(Request $request)
     {
-        return view('prueba');
+        productos::create($request->all());
+     
+
+        return 'Registro exitoso';
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        return view('prueba');
-    }
+   
 
     /**
      * Display the specified resource.
@@ -51,16 +45,7 @@ class productoController extends Controller
         return response()->json($producto);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $producto = productos::update();
-    }
+   
 
     /**
      * Update the specified resource in storage.
@@ -69,9 +54,20 @@ class productoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id= $request->id;
+        $producto = productos::where('idProducto', $id);
+        /*   $producto = productos::update([
+            'nombre'=>$request->nombre, 
+            'descripcion' =>$request->descripcion, 
+            'precio'=>$request->precio, 
+            'descuento'=>$request->descuento,
+            'imagen'=>$request->imagen,
+            'etiqueta'=>$request->etiqueta
+        ]);*/
+        $producto->update($request->all());
+        return 'Actualizacion exitosa';
     }
 
     /**

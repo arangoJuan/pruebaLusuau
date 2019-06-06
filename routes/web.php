@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::get('/getProduct', 'productoController@show');
 Route::post('/createProduct', 'productoController@create');
+Route::post('/updateProduct', 'productoController@update');
