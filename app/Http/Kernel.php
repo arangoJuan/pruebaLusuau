@@ -78,5 +78,4 @@ class Kernel extends HttpKernel
         \Illuminate\Auth\Middleware\Authorize::class,
     ];
 
-    protected $except = ['http://localhost/apiProductos/public/createProduct'];
 }
